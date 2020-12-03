@@ -9,20 +9,16 @@
 </head>
 <body>
     <main id="app">
-        <h1 @click="clickHeader">{{ message }}</h1>
-        <p>{{anotherMessage}}</p>
-
-        <!-- show the prof data in profs array -->
         <ul>
             <li v-for="mini in Minis">
-                <p>Model Name: {{ mini.name }}, Descripton: {{ mini.description }}</p>
-                <a href="" class="remove-mini" @click.prevent="removeMini(mini)" :class="{'mini-button-modifier' : removeAformat}">Remove {{ mini.name}}</a> <!-- :href="" -->
+                <p>Model Name: {{ mini.photo }}, Descripton: {{ mini.Name }}</p>
+                <a href="" class="remove-mini" @click.prevent="removeMini(mini)" :class="{'mini-button-modifier' : removeAformat}"><img src="temp.jpg" alt="mini image" ></a> <!-- :href="" -->
             </li>
         </ul>
 
         <section class="bio-data" :class="{'show-bio' : showBioData}">
-            <h1>{{ currentMiniData.name }}</h1>
-            <p> {{ currentMiniData.nickname }}</p>
+            <h1>{{ currentMiniData.Model }}</h1>
+            <p> {{ currentMiniData.bio }}</p>
         </section>
     </main>
 </body>

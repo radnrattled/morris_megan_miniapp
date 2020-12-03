@@ -6,23 +6,19 @@ import { fetchData } from "./components/dataMiner.js";
         //el: "#app",
 
         data: {
-            message: "Hello from Vue!",
-            anotherMessage: "more text, so simple! much winning",
             removeAformat: true,
             showBioData: false,
             currentMiniData: {},
 
-            Minis: [
-                { name: "Justin", role: "coordinator", nickname: "nitsuJ"},
-                { name: "John", role: "prof", nickname: "super chill" },
-                { name: "Joe", role: "prof", nickname: "Teddy Bear" },
-            ]
+            Minis: [],
+            currentMiniData: {}
         },
 
         mounted: function() {
             console.log("Vue is Mounted");
             
-            fetchData("./includes/index.php").then(data => console.log(data)).catch(err => console.error(err));
+            fetchData("./includes/functions.php").then(data => {
+            data.forEach(mini => this.Minis.push(mini));}).src = `images/${data[user].photo}`.catch(err => console.error(err));
         },
 
         updated: function(){
@@ -37,15 +33,16 @@ import { fetchData } from "./components/dataMiner.js";
             clickHeader() {
                 console.log("clicked on the header");
             },
-            removeProf(target) {
+            removeMini(target) {
                 // remove this prof from the professors array
-                console.log('clicked to remove prof', target, target.name);
+                console.log('clicked to view Mini bio', target, target.name);
                 // the "this" keyword inside a vue instance REFERS to the Vue instance itself by default
-
+            
                 // toggle the property between true and false using a ternary statement
                 this.showBioData = this.showBioData ? false : true
-                this.currentProfData = target;
-            }
+
+                this.currentMiniData = target;
+            
         }
-    }).$mount("#app"); // also connects Vue to your wrapper in HTML
+    }}).$mount("#app"); // also connects Vue to your wrapper in HTML
 })();
